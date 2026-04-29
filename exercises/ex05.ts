@@ -2,8 +2,32 @@
 // The function need to return a message with the configuration of the room that is in the param.
 // If the room doesn't provide price, you need to define a default value in the param of the function.
 
-const getRoomConfiguration = () => {
-  // Code here
+interface Room {
+  size: string;
+  type: string;
+  viewToSea: boolean;
+  hasAC: boolean;
+  price?: number;
+}
+
+const getRoomConfiguration = (room: Room): string => {
+  const {
+    size,
+    type,
+    viewToSea,
+    hasAC,
+    price = 100,
+  } = room;
+
+  const viewToSeaText = viewToSea ? "Yes" : "No";
+  const hasACText = hasAC ? "Yes" : "No";
+
+  return `Room Configuration:
+    - Size: ${size}
+    - Type: ${type}
+    - View to Sea: ${viewToSeaText}
+    - Has AC: ${hasACText}
+    - Price: CAD ${price}`;
 };
 
 //Tests

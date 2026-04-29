@@ -9,8 +9,33 @@
 // Eg: printInfoOrCalculate("TS",5,"+") //Expected result: TS
 // Eg: printInfoOrCalculate("TS") //Expected result: TS
 
-const printInfoOrCalculate = () => {
-  // Code here
+type Operation = "+" | "-" | "*" | "/";
+
+const printInfoOrCalculate = (
+  first: string | number,
+  second?: number,
+  op?: Operation
+): string | number => {
+  if (typeof first === "string") {
+    return first;
+  }
+
+  if (second === undefined || op === undefined) {
+    return first;
+  }
+
+  switch (op) {
+    case "+":
+      return first + second;
+    case "-":
+      return first - second;
+    case "*":
+      return first * second;
+    case "/":
+      return first / second;
+    default:
+      return first;
+  }
 };
 
 // Tests

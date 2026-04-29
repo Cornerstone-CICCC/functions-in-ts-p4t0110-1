@@ -8,11 +8,30 @@
 // If three people like it, it should return '{name1}, {name2} and {name3} like this'
 // If more than three people like it, it should return '{name1}, {name2} and {x} others like this'
 
-const displayLikes = () => {
-  // Code here
+const displayLikes = (names: string[]): string => {
+  const count = names.length;
+
+  if (count === 0) {
+    return "no one likes this";
+  }
+
+  if (count === 1) {
+    return `${names[0]} likes this`;
+  }
+
+  if (count === 2) {
+    return `${names[0]} and ${names[1]} like this`;
+  }
+
+  if (count === 3) {
+    return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+  }
+
+  return `${names[0]}, ${names[1]} and ${count - 2} others like this`;
 };
 
 export default displayLikes;
+
 
 displayLikes([]); // Expected result: 'no one likes this'
 displayLikes(["Peter"]); // Expected result: 'Peter likes this'
